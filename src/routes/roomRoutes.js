@@ -3,8 +3,8 @@ const roomController = require('../controllers/roomController');
 const router = express.Router();
 const ScoreService = require('../services/score');
 
-router.post('create-room', roomController.createRoom);
-router.get(':roomId/players', roomController.getPlayers);  
+router.post('/create-room', roomController.createRoom);
+router.get('/:roomId/players', roomController.getPlayers);  
 
 // Ruta para guardar los puntajes
 router.post('/save', async (req, res) => {

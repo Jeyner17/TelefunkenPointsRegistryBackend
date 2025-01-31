@@ -17,7 +17,7 @@ const io = new Server(server, {
     }
 });
 
-app.use('/api/scores', require('./routes/scores'));
+app.use('api/scores', require('./routes/scores'));
 
 // Configurar sockets
 socketHandler(io);
