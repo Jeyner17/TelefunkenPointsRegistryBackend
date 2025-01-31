@@ -7,7 +7,8 @@ const app = express();
 app.use(cors({
     origin: ['https://venerable-squirrel-c3b174.netlify.app'],
     methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type']
+    allowedHeaders: ['Content-Type'],
+    credentials:true
 }));
 
 app.use(express.json());

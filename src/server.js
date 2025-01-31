@@ -11,7 +11,9 @@ const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
         origin: 'https://venerable-squirrel-c3b174.netlify.app', // SIN '/'
-        methods: ['GET', 'POST']
+        methods: ['GET', 'POST'],
+        allowedHeaders:["Content-Type"],
+        credentials:true
     }
 });
 
