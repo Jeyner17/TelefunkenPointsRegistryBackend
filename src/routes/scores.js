@@ -3,7 +3,7 @@ const router = express.Router();
 const ScoreService = require('../services/score');
 
 // Ruta para guardar los puntajes
-router.post('/save', async (req, res) => {
+router.post('save', async (req, res) => {
   const { roomId, scores } = req.body;
 
   try {
