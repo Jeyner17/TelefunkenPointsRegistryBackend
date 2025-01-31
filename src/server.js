@@ -10,12 +10,14 @@ connectDB();
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: 'https://venerable-squirrel-c3b174.netlify.app/',
+        origin: 'https://venerable-squirrel-c3b174.netlify.app', // SIN '/'
         methods: ['GET', 'POST']
     }
 });
+
 app.use('/api/scores', require('./routes/scores'));
 
+// Configurar sockets
 socketHandler(io);
 
 server.listen(3000, () => {
