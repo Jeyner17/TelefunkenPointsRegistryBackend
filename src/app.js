@@ -6,7 +6,7 @@ const app = express();
 
 // Configurar CORS para todas las rutas HTTP
 app.use(cors({
-    origin: 'http://localhost:4200',
+    origin: 'https://venerable-squirrel-c3b174.netlify.app/',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type']
 }));
