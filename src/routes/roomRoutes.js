@@ -6,7 +6,6 @@ const ScoreService = require('../services/score');
 router.post('/create-room', roomController.createRoom);
 router.get('/:roomId/players', roomController.getPlayers);  
 
-// Ruta para guardar los puntajes
 router.post('/save', async (req, res) => {
     const { roomId, scores } = req.body;
   
@@ -19,7 +18,6 @@ router.post('/save', async (req, res) => {
     }
   });
   
-  // Ruta para obtener los puntajes por sala
   router.get('/get/:roomId', async (req, res) => {
     const { roomId } = req.params;
   

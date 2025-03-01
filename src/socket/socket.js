@@ -1,7 +1,7 @@
 const { getRoom, roomExists, addPlayerToRoom, getRoomPlayers } = require('../models/rooms');
 
 module.exports = (io) => {
-    const roomScores = new Map(); // Almacena los puntajes por sala
+    const roomScores = new Map();
 
     io.on('connection', (socket) => {
         console.log('A user connected');
@@ -15,12 +15,10 @@ module.exports = (io) => {
                     addPlayerToRoom(roomId, { name: playerName, avatar });
                     socket.join(roomId);
 
-                    // Inicializar puntajes si no existen
                     if (!roomScores.has(roomId)) {
                         roomScores.set(roomId, {});
                     }
 
-                    // Enviar puntajes actuales al nuevo jugador
                     socket.emit('scores-update', roomScores.get(roomId));
                     io.to(roomId).emit('update-players', getRoomPlayers(roomId));
                     socket.emit('joined-room', { success: true, room });
@@ -33,7 +31,6 @@ module.exports = (io) => {
             }
         });
 
-        // Manejar actualización de puntajes
         socket.on('update-score', ({ roomId, playerName, score, stage }) => {
             if (roomExists(roomId)) {
                 const scores = roomScores.get(roomId) || {};
@@ -48,8 +45,6 @@ module.exports = (io) => {
                 scores[playerName].total = scores[playerName].history.reduce((sum, curr) => sum + (curr || 0), 0);
                 
                 roomScores.set(roomId, scores);
-                
-                // Emitir actualización a todos los jugadores en la sala
                 io.to(roomId).emit('scores-update', scores);
             }
         });

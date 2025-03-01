@@ -1,17 +1,15 @@
-const cors = require('cors');
 const express = require('express');
-
+const cors = require('cors');
+const roomRoutes = require('./routes/roomRoutes');
 const app = express();
 
-// Configurar CORS para todas las rutas HTTP
 app.use(cors({
-    origin: ['https://venerable-squirrel-c3b174.netlify.app'],
+    origin: 'http://localhost:4200',
     methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type'],
-    credentials:true
+    allowedHeaders: ['Content-Type']
 }));
 
 app.use(express.json());
-app.use('api/rooms', require('./routes/rooms'));
+app.use('/api/rooms', roomRoutes);
 
 module.exports = app;

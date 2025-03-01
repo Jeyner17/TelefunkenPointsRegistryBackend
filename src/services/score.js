@@ -16,10 +16,8 @@ class ScoreService {
       let score = await Score.findOne({ roomId });
 
       if (!score) {
-        // Si no existe, lo creamos
         score = new Score({ roomId, scores: scoresData });
       } else {
-        // Si ya existe, actualizamos los puntajes
         score.scores = scoresData;
       }
 
