@@ -4,8 +4,8 @@ const roomRoutes = require('./routes/roomRoutes');
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:4200',
-    methods: ['GET', 'POST'],
+    origin: '*', 
+    methods: ['GET', 'POST', 'OPTION'],
     allowedHeaders: ['Content-Type']
 }));
 
